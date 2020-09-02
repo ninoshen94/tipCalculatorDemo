@@ -25,6 +25,14 @@ The following **additional** features are implemented:
 * [X] Users can type in customized tip percentage.
 * [X] All inputs will be check for the safety and software robust. The percentage will be in range 0.0 to 100.0, at most 1 demical is allowed. The total amount will be a integer or double within two decimals.
 
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='http://g.recordit.co/flzXWFk81t.gif' title='Screen Video' width='' alt='Screen Record Video' />
+
+GIF created with [Recordit](https://recordit.co/).
+
 ## Notes
 
 This is my first time use regular expression in swift, and then I found that the regular expression function is not so smart in swift. I spent more than 1 hour to figure out how to make regular expression works in Swift.
