@@ -17,19 +17,22 @@ The following **optional** features are implemented:
 
 * [ ] UI animations
 * [ ] Remembering the bill amount across app restarts (if <10mins)
-* [ ] Using locale-specific currency and currency thousands separators.
-* [ ] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
+* [X] Using locale-specific currency and currency thousands separators.
+* [X] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
 
 * [X] Users can type in customized tip percentage.
 * [X] All inputs will be check for the safety and software robust. The percentage will be in range 0.0 to 100.0, at most 1 demical is allowed. The total amount will be a integer or double within two decimals.
+* [X] Tax will be also calculated. Since tax will not change frequently, to set the tax rate, user needs to set it in setting interface.
+* [X] Users are able to set their default tax rate, tip rate and currency in a seperated setting interface. Settings will be saved to the local storage which allow you restart the app, even the phone without lose perferance, and also will come into effect immediately. 
+* [X] Simple UI designs.
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://g.recordit.co/flzXWFk81t.gif' title='Screen Video' width='' alt='Screen Record Video' />
+<img src='http://g.recordit.co/ZvNxKwB7Jg.gif' title='Screen Video' width='' alt='Screen Record Video' />
 
 GIF created with [Recordit](https://recordit.co/).
 
