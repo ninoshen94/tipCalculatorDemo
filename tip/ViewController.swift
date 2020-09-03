@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     var taxRate = 0.065;
     var currency = "$";
     var initialized = false;
+    var taxT = -1.0;
     override func viewDidLoad() {
         super.viewDidLoad();
         billAmountText.becomeFirstResponder();
@@ -53,6 +54,11 @@ class ViewController: UIViewController {
                     e!.text = currency + temp;
                 }
             }
+            if(tax.text != "-"){
+                taxT = Double(billAmountText.text!)! * defaults.double(forKey: "defaultTax");
+                tax.text = currency + String(format: "%.2f", taxT);
+                calculate();
+            }
         }
     }
 
@@ -80,7 +86,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func changeCustom(_ sender: Any) {
-        tipPercentage.selectedSegmentIndex = -1;
+        if(type(of:sender) == UITextField.self && sender as! UITextField == custom){
+            tipPercentage.selectedSegmentIndex = -1;
+        }
         custom.textColor = UIColor.black;
         billAmountText.textColor = UIColor.black;
         if(checkAva()){
@@ -111,6 +119,7 @@ class ViewController: UIViewController {
                     price.text = currency + String(format: "%.2f", Double(cus)!);
                     let cur = Double(cus)!;
                     tax.text = currency + String(format: "%.2f", cur * taxRate);
+                    taxT = cur * taxRate;
                 }
             
         } catch {
@@ -126,6 +135,7 @@ class ViewController: UIViewController {
             if (results.endIndex != 1 || (cus as NSString).substring(with: results[0].range) != cus) {
                 custom.textColor = UIColor.red;
                 isGood = false;
+                setback();
             }
         } catch {
             print("error");
@@ -140,7 +150,7 @@ class ViewController: UIViewController {
         let tip = (Double(custom.text!) ?? 0) / 100;
         let amount = Double(billAmountText.text!) ?? 0;
         tipsView.text = currency + String(format: "%.2f", amount * tip);
-        totalArea.text = currency + String(format: "%.2f", amount * (1 + tip));
+        totalArea.text = currency + String(format: "%.2f", (amount) * (1 + tip) + taxT);
     }
     
     @IBAction func checkIsDefault(_ sender: UITextField!) {
@@ -163,7 +173,6 @@ class ViewController: UIViewController {
         }
     }
     func setback(){
-        
         tipsView.text = "-";
         totalArea.text = "-";
         price.text = "-";
